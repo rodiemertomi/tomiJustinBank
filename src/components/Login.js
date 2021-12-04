@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 
 const Login = () => {
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
+    
+    const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
 
-    const handleLogin = () => {
-        alert(`${firstName}, ${lastName}`)
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        alert(`${userName}, ${password}`)
     }
 
     return (
@@ -18,20 +20,20 @@ const Login = () => {
                  type="text" 
                  className="inputs" 
                  placeholder="Input username" 
-                 value={firstName} 
+                 value={userName} 
                  onChange={(e) => {
-                    setFirstName(e.target.value)}}
+                    setUserName(e.target.value)}}
                 />
                 <label htmlFor="" className="labels">Password</label>
                 <input 
                  type="text" 
                  className="inputs"
                  placeholder="Input password" 
-                 value={lastName} 
+                 value={password} 
                  onChange={(e) => {
-                    setLastName(e.target.value)}}
+                    setPassword(e.target.value)}}
                 />
-                <button className="buttons" onClick={handleLogin}>Login</button>
+                <button type='submit' className="buttons" onClick={handleSubmit}>Login</button>
                 <span>or</span>
                 <button className="buttons">Sign Up</button>
             </form>

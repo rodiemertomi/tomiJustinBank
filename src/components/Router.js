@@ -13,12 +13,12 @@ const Router = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/admin/create-user" component={CreateUser} />
-            <Route path="/:username" component={Dashboard} />
-            <Route path="/:username/withdraw" component={Withdraw} />
-            <Route path="/:username/deposit" component={Deposit} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/admin/create-user" component={CreateUser} />
+            <Route exact path="/user/:username" component={Dashboard} />
+            <Route exact path="/user/:username/withdraw" component={Withdraw} />
+            <Route exact path="/user/:username/deposit" component={Deposit} />
             <Route component={NotFound} />
         </Switch>
     </BrowserRouter>
