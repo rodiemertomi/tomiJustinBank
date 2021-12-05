@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
 import Admin from './Admin';
@@ -11,16 +11,18 @@ import NotFound from './NotFound';
 
 const Router = () => (
     <BrowserRouter>
-        <Switch>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/admin" component={Admin} />
-            <Route exact path="/admin/create-user" component={CreateUser} />
-            <Route exact path="/user/:username" component={Dashboard} />
-            <Route exact path="/user/:username/withdraw" component={Withdraw} />
-            <Route exact path="/user/:username/deposit" component={Deposit} />
-            <Route component={NotFound} />
-        </Switch>
+        <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/create-user" element={<CreateUser />} />
+            <Route path="/admin/deposit" element={<Deposit />} />
+            <Route path="/admin/withdraw" element={<Withdraw />} />
+            <Route path="/user/:username" element={<Dashboard />} />
+            <Route path="/user/:username/withdraw" element={<Withdraw />} />
+            <Route path="/user/:username/deposit" element={<Deposit />} />
+            <Route path="*" element={<NotFound />} />
+        </Routes>
     </BrowserRouter>
 );
 

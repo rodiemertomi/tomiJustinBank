@@ -6,7 +6,11 @@ export function formatPrice(cents){
 }
 
 export function rando(arr){
-    return arr[Math.floor(Math.random() * arr.lengt)];
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+export function randAcctNo(){
+    return Math.random().toString().substr(2, 9);
 }
 
 export function slugify(text){
