@@ -55,7 +55,7 @@ const AdminTransfer = () => {
     
     return (
         <div>
-            <form className="deposit-form">
+            <form className="transfer-form">
                 <h1>Deposit Form</h1>
                 <label className="labels">From:</label>
                 <input type="text" className="inputs" placeholder="Username of depositor" value={userName1} onChange={(e) => {setUserName1(e.target.value)}}/>

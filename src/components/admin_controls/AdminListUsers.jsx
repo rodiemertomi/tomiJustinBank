@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import AdminUserList from './AdminUserList'
 
 const AdminListUsers = () => {
     const [searchKeyword, setSearchKeyword] = useState('')
     const keyList = Object.keys(localStorage)
-    console.log(keyList)
     return (
         <div>
             <h1>Users List</h1>

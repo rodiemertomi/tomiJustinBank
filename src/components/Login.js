@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate, Link } from 'react-router-dom'
 
 const Login = () => {
     
@@ -12,9 +12,7 @@ const Login = () => {
         userName === 'admin' ? navigate(`/admin`) : checkUser(userName)
     }
 
-    const handleSignUp = () => {
-        navigate(`/signup`)
-    }
+    
 
     const checkUser = (name) => {
         const user = JSON.parse(localStorage.getItem(`${name}`))
@@ -51,7 +49,7 @@ const Login = () => {
                 />
                 <button type='submit' className="buttons" onClick={handleSubmit}>Login</button>
                 <span>or</span>
-                <button className="buttons" onClick={handleSignUp}>Sign Up</button>
+                <Link to="/signup">Already have an account? Log in</Link>
             </form>
         </div>
     )

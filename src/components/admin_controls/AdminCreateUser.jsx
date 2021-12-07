@@ -1,12 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { randAcctNo } from '../helpers'
 
 const AdminCreateUser = () => {
     const [userName, setUserName] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
-    const [accountNumber, setAccountNumber] = useState('')
+    const [accountNumber, setAccountNumber] = useState(0)
     const [password, setPassword] = useState('')
 
     const handleUser = (event) => {
@@ -14,10 +13,12 @@ const AdminCreateUser = () => {
         if(userName !== "" && firstName !== "" && lastName !== "" && password !== ""){
             const user = {
                 balance: 0,
+                username: userName,
                 accountnumber: accountNumber,
                 password: password,
                 firstname: firstName,
                 lastname: lastName,
+                fullname: `${firstName} ${lastName}`
             }
             if(localStorage.getItem(`${userName}`) !== null){
                 alert(`${userName} already exists`)
@@ -39,7 +40,7 @@ const AdminCreateUser = () => {
     }
 
     useEffect(()=> {
-        setAccountNumber(randAcctNo())
+        setAccountNumber(Date.now())
     },[userName])
 
     return (

@@ -4,6 +4,7 @@ import { slugify } from '../helpers'
 import UserDeposit from './UserDeposit'
 import UserWithdraw from './UserWithdraw'
 import Modal from '../../modal/Modal'
+import UserTransfer from './UserTransfer'
 
 const Dashboard = () => {
     const navigate = useNavigate()
@@ -12,6 +13,7 @@ const Dashboard = () => {
     const [showDeposit, setShowDeposit] = useState(false)
     const [showWithdraw, setShowWithdraw] = useState(false)
     const [showTransfer, setShowTransfer] = useState(false)
+    console.log(username)
 
     return (
         <div className='dashboard-container'>
@@ -40,7 +42,7 @@ const Dashboard = () => {
                 show={showDeposit}
                 user={username}
                 >
-                <UserDeposit username={username} />
+                <UserDeposit username={user.username} />
             </Modal>
             {/* BUTTON THAT SHOWS DEPOSIT MONEY MODAL */}
 
@@ -54,7 +56,7 @@ const Dashboard = () => {
                 }}
                 show={showWithdraw}
                 >
-                <UserWithdraw username={username}/>
+                <UserWithdraw username={user.username}/>
             </Modal>
             {/* BUTTON THAT SHOWS WITHDRAW MONEY MODAL */}
             
@@ -68,9 +70,8 @@ const Dashboard = () => {
                     setShowTransfer(false)
                 }}
                 show={showTransfer}
-                user={username}
                 >
-                <p>This is a modal body</p>
+                <UserTransfer username={user.username} />
             </Modal>
             {/* BUTTON THAT SHOWS TRANSFER MONEY MODAL */}
 

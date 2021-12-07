@@ -2,11 +2,17 @@ import React, { useState } from 'react'
 
 const UserDeposit = ({ username='' }) => {
     const [amount, setAmount] = useState(0) 
-
+    
     const handleDeposit = () => {
-        const userObj = JSON.parse(localStorage.getItem(`${username}`))
-        userObj.balance += amount
-        localStorage.setItem(`${username}`, JSON.stringify(`${userObj}`))
+        if(amount !== 0 && amount !== null){
+            const userObj = JSON.parse(localStorage.getItem(`${username}`))
+            userObj.balance += parseInt(amount)
+            localStorage.setItem(`${username}`, JSON.stringify(`${userObj}`))
+
+            setAmount(0)
+        }else{
+            alert(`Fields cannot be empty.`)
+        }
     }
 
     return (
@@ -14,7 +20,7 @@ const UserDeposit = ({ username='' }) => {
             <form className="deposit-form">
                 <h1>Deposit To: {username}</h1>
                 <label className="labels">Amount:</label>
-                <input type="number" className="inputs" placeholder="Amount to deposit:" value={amount} onChange={(e) => {setAmount(e.target.value)}}/>
+                <input type="number" className="inputs" placeholder="Amount to deposit:" onChange={(e) => {setAmount(e.target.value)}}/>
                 <button type='submit' className="buttons" onClick={handleDeposit}>Deposit</button>
             </form>
         </div>

@@ -12,7 +12,9 @@ body {
     align-items: center;
 }
 
-.login-form, .create-user-form, .deposit-form, .withdraw-form, .dashboard-container {
+.login-form, .create-user-form,
+.deposit-form, .withdraw-form,
+.dashboard-container, .transfer-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
