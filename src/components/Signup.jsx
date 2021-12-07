@@ -48,15 +48,15 @@ const Signup = () => {
             <form className="create-user-form">
                 <h1>Create User</h1>            
                 <label className="labels">Username</label>
-                <input required type="text" className="inputs" value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
+                <input required type="text" className="inputs" value={userName} placeholder='Enter Desired Username' onChange={(e) => {setUserName(e.target.value)}}/>
                 <label className="labels">First Name</label>
-                <input required type="text" className="inputs" value={firstName} onChange={(e) => {setFirstName(e.target.value)}}/>
+                <input required type="text" className="inputs" value={firstName} placeholder='Enter Firstname Here' onChange={(e) => {setFirstName(e.target.value)}}/>
                 <label className="labels">Last Name</label>
-                <input required type="text" className="inputs" value={lastName} onChange={(e) => {setLastName(e.target.value)}}/>
+                <input required type="text" className="inputs" value={lastName} placeholder='Enter Lastname Here ' onChange={(e) => {setLastName(e.target.value)}}/>
                 <label className="labels">Password</label>
-                <input required type="password" className="inputs" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-                <button type='submit' onClick={handleUser}>Sign Up</button>
-                <Link to="/">Already have an account? Log in</Link>
+                <input required type="password" className="inputs" value={password} placeholder='Enter Password Here' onChange={(e) => {setPassword(e.target.value)}}/>
+                <button type='submit' className='buttons' onClick={handleUser}>Sign Up</button>
+                <Link to="/" className='links'>Already have an account? Log in</Link>
             </form>
         </div>
     )

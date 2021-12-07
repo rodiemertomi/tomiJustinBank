@@ -49,7 +49,7 @@ const Login = () => {
                 />
                 <button type='submit' className="buttons" onClick={handleSubmit}>Login</button>
                 <span>or</span>
-                <Link to="/signup">Already have an account? Log in</Link>
+                <Link to="/signup" className='links'>Already have an account? Log in</Link>
             </form>
         </div>
     )

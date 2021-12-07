@@ -5,13 +5,17 @@ const AdminDeposit = () => {
     const [amount, setAmount] = useState(0)
 
     const sendTo = (username1, peso) => {
-        const userObj = JSON.parse(localStorage.getItem(`${userName1}`))
-        userObj.balance += parseInt(peso)
-        localStorage.setItem(`${username1}`, JSON.stringify(userObj))
-        alert(`${amount} deposited to ${userName1}`)
+        if(peso < 0 || peso === 0){
+            alert('Amount cannot be less than or equal to zero.')
+        }else{
+            const userObj = JSON.parse(localStorage.getItem(`${userName1}`))
+            userObj.balance += parseInt(peso)
+            localStorage.setItem(`${username1}`, JSON.stringify(userObj))
+            alert(`${amount} deposited to ${userName1}`)
 
-        setUserName1('')
-        setAmount(0)
+            setUserName1('')
+            setAmount(0)
+        }
     }
 
     const checkUser = (event) => {
@@ -36,9 +40,9 @@ const AdminDeposit = () => {
             <form className="deposit-form">
                 <h1>Deposit Form</h1>
                 <label className="labels">To:</label>
-                <input type="text" className="inputs" placeholder="Username of destination" value={userName1} onChange={(e) => {setUserName1(e.target.value)}}/>
+                <input type="text" className="inputs" placeholder="Username of destination" onChange={(e) => {setUserName1(e.target.value)}}/>
                 <label className="labels">Amount:</label>
-                <input type="number" className="inputs" placeholder="Amount to deposit:" value={amount} onChange={(e) => {setAmount(e.target.value)}}/>
+                <input type="number" className="inputs" placeholder="Amount to deposit:" onChange={(e) => {setAmount(e.target.value)}}/>
                 <button type='submit' className="buttons" onClick={checkUser}>Deposit</button>
             </form>
         </div>

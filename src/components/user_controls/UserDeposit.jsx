@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 const UserDeposit = ({ username='' }) => {
     const [amount, setAmount] = useState(0) 
+    console.log(username)
     
     const handleDeposit = () => {
         if(amount !== 0 && amount !== null){

@@ -5,6 +5,7 @@ import UserDeposit from './UserDeposit'
 import UserWithdraw from './UserWithdraw'
 import Modal from '../../modal/Modal'
 import UserTransfer from './UserTransfer'
+import UserExpenseTracker from './UserExpenseTracker'
 
 const Dashboard = () => {
     const navigate = useNavigate()
@@ -13,69 +14,73 @@ const Dashboard = () => {
     const [showDeposit, setShowDeposit] = useState(false)
     const [showWithdraw, setShowWithdraw] = useState(false)
     const [showTransfer, setShowTransfer] = useState(false)
-    console.log(username)
 
     return (
-        <div className='dashboard-container'>
-            { username }'s Dashboard
-            <br />
-            <br />
-            ₱ {slugify(user.balance)}
-            <br />
-            <br />
-            Account number
-            <br />
-            <br />
-            {user.accountnumber}
-            <button className='buttons' onClick={() => {
-                navigate(`/`)
-            }}>Logout</button>
+        <>
+            <div className='dashboard-container'>
+                { username }'s Dashboard
+                <br />
+                <br />
+                ₱ {slugify(user.balance)}
+                <br />
+                <br />
+                Account number
+                <br />
+                <br />
+                {user.accountnumber}
+                <button className='buttons' onClick={() => {
+                    navigate(`/`)
+                }}>Logout</button>
 
-            {/* BUTTON THAT SHOWS DEPOSIT MONEY MODAL */}
-            <button className="buttons" onClick={()=>{
-                setShowDeposit(true)
-            }}>Deposit</button>
-            <Modal
-                onClose={() => {
-                    setShowDeposit(false)
-                }}
-                show={showDeposit}
-                user={username}
-                >
-                <UserDeposit username={user.username} />
-            </Modal>
-            {/* BUTTON THAT SHOWS DEPOSIT MONEY MODAL */}
+                {/* BUTTON THAT SHOWS DEPOSIT MONEY MODAL */}
+                <button className="buttons" onClick={()=>{
+                    setShowDeposit(true)
+                }}>Deposit</button>
+                <Modal
+                    onClose={() => {
+                        setShowDeposit(false)
+                    }}
+                    show={showDeposit}
+                    >
+                    <UserDeposit username={user.username} />
+                </Modal>
+                {/* BUTTON THAT SHOWS DEPOSIT MONEY MODAL */}
 
-            {/* BUTTON THAT SHOWS WITHDRAW MONEY MODAL */}
-            <button className="buttons" onClick={() =>{
-                setShowWithdraw(true)
-            }}>Withdraw</button>
-            <Modal
-                onClose={() => {
-                    setShowWithdraw(false)
-                }}
-                show={showWithdraw}
-                >
-                <UserWithdraw username={user.username}/>
-            </Modal>
-            {/* BUTTON THAT SHOWS WITHDRAW MONEY MODAL */}
-            
-            {/* BUTTON THAT SHOWS TRANSFER MONEY MODAL */}
-            <button className="buttons" onClick={() => {
-                setShowTransfer(true)
-            }}>Transfer Money</button>
-            <Modal
-                title="Transfer Money To"
-                onClose={() => {
-                    setShowTransfer(false)
-                }}
-                show={showTransfer}
-                >
-                <UserTransfer username={user.username} />
-            </Modal>
-            {/* BUTTON THAT SHOWS TRANSFER MONEY MODAL */}
+                {/* BUTTON THAT SHOWS WITHDRAW MONEY MODAL */}
+                <button className="buttons" onClick={() =>{
+                    setShowWithdraw(true)
+                }}>Withdraw</button>
+                <Modal
+                    onClose={() => {
+                        setShowWithdraw(false)
+                    }}
+                    show={showWithdraw}
+                    >
+                    <UserWithdraw username={user.username}/>
+                </Modal>
+                {/* BUTTON THAT SHOWS WITHDRAW MONEY MODAL */}
+                
+                {/* BUTTON THAT SHOWS TRANSFER MONEY MODAL */}
+                <button className="buttons" onClick={() => {
+                    setShowTransfer(true)
+                }}>Transfer Money</button>
+                <Modal
+                    title="Transfer Money To"
+                    onClose={() => {
+                        setShowTransfer(false)
+                    }}
+                    show={showTransfer}
+                    >
+                    <UserTransfer username={user.username} />
+                </Modal>
+                {/* BUTTON THAT SHOWS TRANSFER MONEY MODAL */}
 
-        </div>
+            </div>
+            <div>                
+                <UserExpenseTracker />
+            </div>
+
+        </>
     )
 }
 
