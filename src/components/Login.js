@@ -17,9 +17,9 @@ const Login = () => {
     }
 
     const checkUser = (name) => {
-        const user = JSON.parse(localStorage.getItem(`${userName}`))
-        if(localStorage.getItem(`${userName}`) !== null && user.password === password){
-            navigate(`/user/${userName}`)
+        const user = JSON.parse(localStorage.getItem(`${name}`))
+        if(localStorage.getItem(`${name}`) !== null && user.password === password){
+            navigate(`/user/${name}`)
 
         } else {
             alert(`Wrong username or password`)

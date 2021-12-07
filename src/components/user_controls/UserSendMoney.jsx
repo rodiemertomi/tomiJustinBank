@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Withdraw = () => {
+const UserSendMoney = () => {
     return (
         <div>
-            withdraw
+            
         </div>
     )
 }
 
-export default Withdraw
+export default UserSendMoney
