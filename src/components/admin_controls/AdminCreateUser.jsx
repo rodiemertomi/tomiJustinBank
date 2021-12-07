@@ -48,13 +48,13 @@ const AdminCreateUser = () => {
             <form className="create-user-form">
                 <h1>Create User</h1>            
                 <label className="labels">Username</label>
-                <input required type="text" className="inputs" value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
+                <input required type="text" className="inputs" placeholder='Enter Username'onChange={(e) => {setUserName(e.target.value)}}/>
                 <label className="labels">First Name</label>
-                <input required type="text" className="inputs" value={firstName} onChange={(e) => {setFirstName(e.target.value)}}/>
+                <input required type="text" className="inputs" placeholder='Enter First Name'onChange={(e) => {setFirstName(e.target.value)}}/>
                 <label className="labels">Last Name</label>
-                <input required type="text" className="inputs" value={lastName} onChange={(e) => {setLastName(e.target.value)}}/>
+                <input required type="text" className="inputs" placeholder='Enter Last Name'onChange={(e) => {setLastName(e.target.value)}}/>
                 <label className="labels">Password</label>
-                <input required type="password" className="inputs" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+                <input required type="password" className="inputs" placeholder='Enter Password'onChange={(e) => {setPassword(e.target.value)}}/>
                 <button type='submit' onClick={handleUser}>Create User</button>
             </form>
         </div>

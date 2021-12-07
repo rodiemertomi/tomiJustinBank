@@ -54,10 +54,10 @@ const AdminWithdraw = () => {
         <div className='withdraw-form'>
             <h1>Withdraw Form</h1>
             <label className='labels'>Withdraw From:</label>
-            <input type="text" className="inputs" onChange={(e) => {setUsername(e.target.value)}} />
+            <input type="text" className="inputs" placeholder='Enter Username' onChange={(e) => {setUsername(e.target.value)}} />
 
             <label className='labels'>Amount</label>
-            <input type="number" className="inputs" required value={amount} onChange={(e) => {setAmount(e.target.value)}}/>
+            <input type="number" className="inputs" placeholder='Enter Amount' onChange={(e) => {setAmount(e.target.value)}}/>
 
             <button type='submit' onClick={handleWithdraw}>Withdraw</button>
         </div>

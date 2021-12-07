@@ -55,7 +55,7 @@ const UserWithdraw = ( { username='' }) => {
             <h1>Withdraw From: {username}</h1>
 
             <label className='labels'>Amount</label>
-            <input type="number" className="inputs" onChange={(e) => {setAmount(e.target.value)}}/>
+            <input type="number" className="inputs" placeholder='Enter Amount' onChange={(e) => {setAmount(e.target.value)}}/>
 
             <button type='submit' onClick={handleWithdraw}>Withdraw</button>
         </div>

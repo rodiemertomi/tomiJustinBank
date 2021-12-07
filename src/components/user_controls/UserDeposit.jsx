@@ -21,7 +21,7 @@ const UserDeposit = ({ username='' }) => {
             <form className="deposit-form">
                 <h1>Deposit To: {username}</h1>
                 <label className="labels">Amount:</label>
-                <input type="number" className="inputs" placeholder="Amount to deposit:" onChange={(e) => {setAmount(e.target.value)}}/>
+                <input type="number" className="inputs" placeholder="Enter Amount" onChange={(e) => {setAmount(e.target.value)}}/>
                 <button type='submit' className="buttons" onClick={handleDeposit}>Deposit</button>
             </form>
         </div>

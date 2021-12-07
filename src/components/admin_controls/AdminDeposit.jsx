@@ -40,9 +40,9 @@ const AdminDeposit = () => {
             <form className="deposit-form">
                 <h1>Deposit Form</h1>
                 <label className="labels">To:</label>
-                <input type="text" className="inputs" placeholder="Username of destination" onChange={(e) => {setUserName1(e.target.value)}}/>
+                <input type="text" className="inputs" placeholder="Enter Username" onChange={(e) => {setUserName1(e.target.value)}}/>
                 <label className="labels">Amount:</label>
-                <input type="number" className="inputs" placeholder="Amount to deposit:" onChange={(e) => {setAmount(e.target.value)}}/>
+                <input type="number" className="inputs" placeholder="Enter Amount" onChange={(e) => {setAmount(e.target.value)}}/>
                 <button type='submit' className="buttons" onClick={checkUser}>Deposit</button>
             </form>
         </div>

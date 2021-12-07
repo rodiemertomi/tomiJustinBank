@@ -46,9 +46,9 @@ const UserTransfer = ( { username='' } ) => {
             <form className="transfer-form">
                 <h1>Transfer from: {username}</h1>
                 <label className="labels">Transfer to:</label>
-                <input type="text" className="inputs" placeholder="Input username:" value={user} onChange={(e) => {setUser(e.target.value)}}/>
+                <input type="text" className="inputs" placeholder="Enter Username" value={user} onChange={(e) => {setUser(e.target.value)}}/>
                 <label className="labels">Amount:</label>
-                <input type="number" className="inputs" placeholder="Amount to deposit:" onChange={(e) => {setAmount(e.target.value)}}/>
+                <input type="number" className="inputs" placeholder="Enter Amount" onChange={(e) => {setAmount(e.target.value)}}/>
                 <button type='submit' className="buttons" onClick={sendFromTo}>Transfer</button>
             </form>
         </div>
