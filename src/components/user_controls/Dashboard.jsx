@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { slugify } from '../helpers'
 import UserDeposit from './UserDeposit'
 import UserWithdraw from './UserWithdraw'
 import Modal from '../../modal/Modal'
 import UserTransfer from './UserTransfer'
 import UserExpenseTracker from './UserExpenseTracker'
+import { formatPrice } from '../helpers'
 
 const Dashboard = () => {
     const navigate = useNavigate()
     const { username } = useParams()
-    const user = JSON.parse(localStorage.getItem(`${username}`))
+    const userObj = JSON.parse(localStorage.getItem(`${username}`))
     const [showDeposit, setShowDeposit] = useState(false)
     const [showWithdraw, setShowWithdraw] = useState(false)
     const [showTransfer, setShowTransfer] = useState(false)
@@ -18,16 +18,16 @@ const Dashboard = () => {
     return (
         <>
             <div className='dashboard-container'>
-                { username }'s Dashboard
+                { userObj.username }'s Dashboard
                 <br />
                 <br />
-                ₱ {slugify(user.balance)}
+                {formatPrice(userObj.balance)}
                 <br />
                 <br />
                 Account number
                 <br />
                 <br />
-                {user.accountnumber}
+                {userObj.accountnumber}
                 <button className='buttons' onClick={() => {
                     navigate(`/`)
                 }}>Logout</button>
@@ -42,7 +42,7 @@ const Dashboard = () => {
                     }}
                     show={showDeposit}
                     >
-                    <UserDeposit username={user.username} />
+                    <UserDeposit userobj={userObj} />
                 </Modal>
                 {/* BUTTON THAT SHOWS DEPOSIT MONEY MODAL */}
 
@@ -56,7 +56,7 @@ const Dashboard = () => {
                     }}
                     show={showWithdraw}
                     >
-                    <UserWithdraw username={user.username}/>
+                    <UserWithdraw userobj={userObj}/>
                 </Modal>
                 {/* BUTTON THAT SHOWS WITHDRAW MONEY MODAL */}
                 
@@ -71,7 +71,7 @@ const Dashboard = () => {
                     }}
                     show={showTransfer}
                     >
-                    <UserTransfer username={user.username} />
+                    <UserTransfer userobj1={userObj} />
                 </Modal>
                 {/* BUTTON THAT SHOWS TRANSFER MONEY MODAL */}
 

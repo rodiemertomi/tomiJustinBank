@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Signup = () => {
+    const navigate = useNavigate()
     const [userName, setUserName] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -12,13 +13,14 @@ const Signup = () => {
         event.preventDefault()
         if(userName !== "" && firstName !== "" && lastName !== "" && password !== ""){
             const user = {
-                balance: 0,
+                balance: 0.00,
                 username: userName,
                 accountnumber: accountNumber,
                 password: password,
                 firstname: firstName,
                 lastname: lastName,
-                fullname: `${firstName} ${lastName}`
+                fullname: `${firstName} ${lastName}`,
+                expense: [{}]
             }
             if(localStorage.getItem(`${userName}`) !== null){
                 alert(`${userName} already exists`)
@@ -26,17 +28,22 @@ const Signup = () => {
             }else{
                 localStorage.setItem(`${userName}`, JSON.stringify(user))
                 alert(`Account created for ${firstName} ${lastName}`)
-                setUserName('')
-                setFirstName('')
-                setLastName('')
-                setPassword('')
-                setAccountNumber('')
+                resetStates()
+                navigate('/')
             }
 
         }else{
             alert(`Fields must not be empty.`)
 
         }
+    }
+
+    const resetStates = () => {
+        setUserName('')
+        setFirstName('')
+        setLastName('')
+        setPassword('')
+        setAccountNumber('')
     }
 
     useEffect(()=> {

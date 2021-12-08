@@ -1,5 +1,5 @@
 export function formatPrice(cents){
-    return (cents / 100).toLocaleString("ph-PHP", {
+    return (cents / 100).toLocaleString("en-PH", {
         style: "currency",
         currency: "Php"
     })
@@ -14,12 +14,5 @@ export function randAcctNo(){
 }
 
 export function slugify(text){
-    return text
-        .toString()
-        .toLowerCase()
-        .replace(/\s+/g, "-")
-        .replace(/[^\w-]+/g, "")
-        .replace(/--+/g, "-")
-        .replace(/^-+/, "")
-        .replace(/-+$/, "")
+    return text.toString().toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "").replace(/--+/g, "-").replace(/^-+/, "").replace(/-+$/, "")
 }

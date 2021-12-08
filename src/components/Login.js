@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
-const Login = () => {
+const Login = () => { 
     
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
@@ -9,7 +9,7 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        userName === 'admin' ? navigate(`/admin`) : checkUser(userName)
+        userName === 'admin' && password === 'admin' ? navigate(`/admin`) : checkUser(userName)
     }
 
     
@@ -22,7 +22,7 @@ const Login = () => {
         } else {
             alert(`Wrong username or password`)
         }
-    }
+    }  
 
     return (
         <div className="login-container">
@@ -30,7 +30,7 @@ const Login = () => {
                 <h1><span>EZ</span> Money</h1>
                 <h1>LOGIN</h1>
                 <label className="labels">Username</label>
-                <input 
+                <input
                  type="text" 
                  className="inputs" 
                  placeholder="Input Username"
@@ -53,6 +53,7 @@ const Login = () => {
             </form>
         </div>
     )
+    
 }
 
 export default Login
