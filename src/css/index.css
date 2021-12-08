@@ -1,3 +1,8 @@
+@font-face {
+    font-family: norwester;
+    src: url(../typography/norwester.otf);
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -5,11 +10,12 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: norwester, Roboto, "Helvetica Neue",'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #448aff;
 }
 
 .login-form, .create-user-form, .deposit-form, .withdraw-form, .dashboard-container {
