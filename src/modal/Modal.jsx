@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import ReactDOM from "react-dom";
