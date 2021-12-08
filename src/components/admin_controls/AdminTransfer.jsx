@@ -58,11 +58,11 @@ const AdminTransfer = () => {
             <form className="transfer-form">
                 <h1>Deposit Form</h1>
                 <label className="labels">From:</label>
-                <input type="text" className="inputs" placeholder="Username of depositor" value={userName1} onChange={(e) => {setUserName1(e.target.value)}}/>
+                <input type="text" className="inputs" placeholder="Username of depositor" onChange={(e) => {setUserName1(e.target.value)}}/>
                 <label className="labels">To:</label>
-                <input type="text" className="inputs" placeholder="Username of destination" value={userName2} onChange={(e) => {setUserName2(e.target.value)}}/>
+                <input type="text" className="inputs" placeholder="Username of destination" onChange={(e) => {setUserName2(e.target.value)}}/>
                 <label className="labels">Amount:</label>
-                <input type="number" className="inputs" placeholder="Amount to deposit:" value={amount} onChange={(e) => {setAmount(e.target.value)}}/>
+                <input type="number" className="inputs" placeholder="Enter Amount" onChange={(e) => {setAmount(e.target.value)}}/>
                 <button type='submit' className="buttons" onClick={checkUser}>Deposit</button>
             </form>
         </div>

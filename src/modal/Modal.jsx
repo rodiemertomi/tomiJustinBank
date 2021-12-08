@@ -27,7 +27,7 @@ const Modal = props => {
                 <div className="modal-content" onClick={e => e.stopPropagation()}>
                     <div className="modal-body">{props.children}</div>
                     <div className="modal-footer">
-                        <button onClick={props.onClose} className="button">
+                        <button className='buttons' onClick={props.onClose}>
                             Close
                         </button>
                     </div>

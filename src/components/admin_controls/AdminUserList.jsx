@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
-const AdminUserList = ({keyList = [], searchKeyword=''}) => {
-    let objArray = [{}]
-    for(let i = 0; i<keyList.length; i++){
-        objArray[i] = (JSON.parse(localStorage.getItem(`${keyList[i]}`)))
-    }
+const AdminUserList = ({objArray = [{}], searchKeyword=''}) => {
+    
     const [filteredNames, setFilteredNames] = useState(objArray)
 
     useEffect(() => {
@@ -17,7 +14,7 @@ const AdminUserList = ({keyList = [], searchKeyword=''}) => {
                 })
             )
         }
-    }, [keyList, searchKeyword])
+    }, [objArray, searchKeyword])
 
     return (
         <table>

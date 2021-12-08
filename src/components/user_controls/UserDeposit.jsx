@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
+import { formatPrice } from '../helpers'
 
-const UserDeposit = ({ username='' }) => {
-    const [amount, setAmount] = useState(0) 
-    console.log(username)
+const UserDeposit = ({ userobj }) => {
+    const [amount, setAmount] = useState(0)
     
     const handleDeposit = () => {
         if(amount !== 0 && amount !== null){
-            const userObj = JSON.parse(localStorage.getItem(`${username}`))
-            userObj.balance += parseInt(amount)
-            localStorage.setItem(`${username}`, JSON.stringify(`${userObj}`))
-
-            setAmount(0)
+            amount < 0 ? alert('Amount can not be negative.') : 
+                userobj.balance += parseInt(amount*100)
+                localStorage.setItem(`${userobj.username}`, JSON.stringify(userobj))
+                alert(`${userobj.username} deposited ${formatPrice(amount*100)}.`)
+                setAmount(0)
         }else{
             alert(`Fields cannot be empty.`)
         }
@@ -19,9 +19,9 @@ const UserDeposit = ({ username='' }) => {
     return (
         <div>
             <form className="deposit-form">
-                <h1>Deposit To: {username}</h1>
+                <h1>Deposit To: {`${userobj.username}`}</h1>
                 <label className="labels">Amount:</label>
-                <input type="number" className="inputs" placeholder="Amount to deposit:" onChange={(e) => {setAmount(e.target.value)}}/>
+                <input type="number" className="inputs" placeholder="Enter Amount" onChange={(e) => {setAmount(e.target.value)}}/>
                 <button type='submit' className="buttons" onClick={handleDeposit}>Deposit</button>
             </form>
         </div>

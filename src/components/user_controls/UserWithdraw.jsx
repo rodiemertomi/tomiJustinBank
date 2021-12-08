@@ -1,24 +1,23 @@
 import React, { useState } from 'react'
+import { formatPrice } from '../helpers'
 
-const UserWithdraw = ( { username='' }) => {
+const UserWithdraw = ( {userobj={}}) => {
     const [amount, setAmount] = useState(null)
 
     const handleWithdraw = () => {
-        const userObj = JSON.parse(localStorage.getItem(`${username}`))
-
-        if(username !== '' && amount !== null){
-            if(checkUser(username)){            
-                if(checkBalance(userObj)){
-                    userObj.balance -= amount
-                    localStorage.setItem(`${username}`, JSON.stringify(userObj))
-                    alert(`${username} withdrew ${amount}`)
+        if(userobj.username !== '' && amount !== null){
+            if(checkUser(userobj.username)){
+                if(checkBalance(userobj.balance)){
+                    userobj.balance -= parseInt(amount*100)
+                    localStorage.setItem(`${userobj.username}`, JSON.stringify(userobj))
+                    alert(`${userobj.username} withdrew ${formatPrice(amount)}`)
     
                 }else{
-                    alert(`${username} has insufficient balance.`)
+                    alert(`${userobj.username} has insufficient balance.`)
                 }
     
             }else{
-                alert(`${username} does not exist.`)
+                alert(`${userobj.username} does not exist.`)
             }
 
         }else{
@@ -38,8 +37,8 @@ const UserWithdraw = ( { username='' }) => {
         }
     }
 
-    const checkBalance = (name) => {
-        if(name.balance >= amount){
+    const checkBalance = (balance) => {
+        if(balance >= amount){
             return true
 
         }else{
@@ -52,12 +51,12 @@ const UserWithdraw = ( { username='' }) => {
     return (
 
         <div className='withdraw-form'>
-            <h1>Withdraw From: {username}</h1>
+            <h1>Withdraw From: {userobj.username}</h1>
 
             <label className='labels'>Amount</label>
-            <input type="number" className="inputs" onChange={(e) => {setAmount(e.target.value)}}/>
+            <input type="number" className="inputs" placeholder='Enter Amount' onChange={(e) => {setAmount(e.target.value)}}/>
 
-            <button type='submit' onClick={handleWithdraw}>Withdraw</button>
+            <button type='submit' className='buttons' onClick={handleWithdraw}>Withdraw</button>
         </div>
     )
 }
