@@ -1,5 +1,16 @@
 import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router'
+import logo from '../img/logo.png'
+
+import TextField from '@mui/material/TextField'
+import { Button, Paper } from '@mui/material'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box';
+
+
+
+
 
 const Login = () => { 
     
@@ -10,6 +21,10 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         userName === 'admin' && password === 'admin' ? navigate(`/admin`) : checkUser(userName)
+    }
+
+    const handleSignUp = () => {
+      navigate(`/signup`)
     }
 
     
@@ -25,35 +40,78 @@ const Login = () => {
     }  
 
     return (
-        <div className="login-container">
+        <div style={{backgroundColor: "#282c34", paddingTop: 1, paddingBottom: 1}}>
+        <Container component="main" maxWidth="xs" style={{backgroundColor: "#282c34"}}>
+            <Paper elevation={52}>
+            <Box
+            sx={{
+                marginTop: 8,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                borderRadius: '100%',
+                margin: 18,
+            }}
+            >
             <form className="login-form">
-                <h1><span>EZ</span> Money</h1>
-                <h1>LOGIN</h1>
-                <label className="labels">Username</label>
-                <input
-                 type="text" 
-                 className="inputs" 
-                 placeholder="Input Username"
-                 value={userName} 
-                 onChange={(e) => {
+                <img src={logo} style={{width: 330, marginTop: 20, marginBottom: -5}} alt="logo" />
+
+                <Typography variant="h3" style={{fontFamily: "norwester"}} >
+                LOGIN
+                </Typography>
+                <TextField
+                  className="inputs"
+                  id="outlined-basic" 
+                  label="Enter Username" 
+                  variant="outlined"
+                  value={userName}
+                  onChange={(e) => {
                     setUserName(e.target.value)}}
+                    required
+                    fullWidth
                 />
-                <label className="labels">Password</label>
-                <input 
-                 type="password" 
-                 className="inputs"
-                 placeholder="Input Password" 
-                 value={password} 
-                 onChange={(e) => {
+                <TextField
+                  className="inputs"
+                  id="outlined-basic" 
+                  label="Enter Password" 
+                  variant="outlined"
+                  value={password}
+                  onChange={(e) => {
                     setPassword(e.target.value)}}
+                    required
+                    fullWidth
                 />
-                <button type='submit' className="buttons" onClick={handleSubmit}>Login</button>
-                <span>or</span>
-                <Link to="/signup" className='links'>Already have an account? Log in</Link>
+                <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                onClick={handleSubmit}
+                style={{fontFamily: "norwester", fontSize: 25}}
+                >
+                Sign In
+                </Button>
+                
+                <Typography variant="h5" color="initial" style={{fontFamily: "norwester"}}>
+                Don't Have an Account?
+                </Typography>
+                <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                onClick={handleSignUp}
+                style={{marginBottom: 20, fontFamily: "norwester", fontSize: 25}}
+                >
+                Sign Up
+                </Button>
             </form>
-        </div>
-    )
-    
+          </Box>
+         </Paper>
+        </Container>
+     </div>
+    )   
 }
 
 export default Login
+
+
+
