@@ -1,32 +1,27 @@
 @font-face {
-    font-family: norwester;
-    src: url(../typography/norwester.otf);
+	font-family: norwester;
+	src: url(../typography/norwester.otf);
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    font-family: norwester, Roboto, "Helvetica Neue",'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #448aff;
-    overflow: hidden;
+	font-family: norwester, Roboto, 'Helvetica Neue', 'Poppins', sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #448aff;
+	overflow: hidden;
 }
 
-.login-form, .create-user-form,
-.deposit-form, .withdraw-form,
-.dashboard-container, .transfer-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+.header {
+	display: flex;
+	justify-content: center;
 }
 
 /* input[type=text], input[type=password],
@@ -38,93 +33,160 @@ input[type=number] {
     box-sizing: border-box;
 } */
 
-.links{
-    text-decoration: none;
-    color: black;
+.links {
+	text-decoration: none;
+	color: black;
+}
+
+th {
+	color: white;
+}
+
+th,
+td {
+	width: 100%;
+	text-align: center;
+	padding: 10px 100px;
+	border-bottom: 2px solid black;
+}
+
+.expense-rows {
+	width: 100%;
+	overflow: auto;
+	height: 200px;
+}
+
+.login-form,
+.create-user-form,
+.deposit-form,
+.withdraw-form,
+.dashboard-container,
+.transfer-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='number'] {
+	font-size: 20px;
+	padding: 12px 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.links {
+	text-decoration: none;
 }
 
 .buttons {
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    outline: none;
-    border-radius: 4px;
-    box-sizing: border-box;
-    padding: 12px 20px;
+	font-size: 20px;
+	background-color: black;
+	color: white;
+	outline: none;
+	border-radius: 4px;
+	box-sizing: border-box;
+	padding: 12px 20px;
 }
 
-.buttons:hover{
-    background-color: white;
-    color: black;
+.add-button {
+	content: 'Add Expense';
+	font-size: 20px;
+	background-color: black;
+	color: white;
+	outline: none;
+	border-radius: 4px;
+	box-sizing: border-box;
+	padding: 12px 20px;
+}
+
+.edit-button {
+	content: 'Edit expense';
+	font-size: 20px;
+	background-color: black;
+	color: white;
+	outline: none;
+	border-radius: 4px;
+	box-sizing: border-box;
+	padding: 12px 20px;
+}
+
+.buttons:hover {
+	background-color: white;
+	color: black;
 }
 
 .buttons-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    gap: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	gap: 10px;
 }
 
 .modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
-    pointer-events: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+	pointer-events: none;
 }
 
 .modal.enter-done {
-    opacity: 1;
-    pointer-events: visible;
+	opacity: 1;
+	pointer-events: visible;
 }
 
 .modal.exit {
-    opacity: 0;
+	opacity: 0;
 }
 
 .modal-content {
-    width: 500px;
-    background-color: #fff;
-    transition: all 0.3s ease-in-out;
-    transform: translateY(-200px);
+	width: 500px;
+	background-color: #fff;
+	transition: all 0.3s ease-in-out;
+	transform: translateY(-200px);
 }
 
 .modal.enter-done .modal-content {
-    transform: translateY(0);
+	transform: translateY(0);
 }
 
 .modal.exit .modal-content {
-    transform: translateY(-200px);
+	transform: translateY(-200px);
 }
 
 .modal-header,
 .modal-footer {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .modal-title {
-    margin: 0;
+	margin: 0;
 }
 
 .modal-body {
-    padding: 10px;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+	padding: 10px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 }
 
-.flex-large{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.flex-large {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
