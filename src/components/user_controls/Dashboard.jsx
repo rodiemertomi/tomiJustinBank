@@ -14,19 +14,6 @@ const Dashboard = () => {
 	const [showDeposit, setShowDeposit] = useState(false)
 	const [showWithdraw, setShowWithdraw] = useState(false)
 	const [showTransfer, setShowTransfer] = useState(false)
-	const [userBalance, setUserBalance] = useState(userObj.balance)
-
-	const updateUserBalance = amount => {
-		userObj.balance -= parseInt(amount)
-		setUserBalance(userObj.balance)
-		localStorage.setItem(`${username}`, JSON.stringify(userObj))
-	}
-
-	const updateUserBalancePlus = amount => {
-		userObj.balance += parseInt(amount)
-		setUserBalance(userObj.balance)
-		localStorage.setItem(`${username}`, JSON.stringify(userObj))
-	}
 
 	return (
 		<>
@@ -34,7 +21,7 @@ const Dashboard = () => {
 				{userObj.username}'s Dashboard
 				<br />
 				<br />
-				{formatPrice(userBalance)}
+				{formatPrice(userObj.balance)}
 				<br />
 				<br />
 				Account number
