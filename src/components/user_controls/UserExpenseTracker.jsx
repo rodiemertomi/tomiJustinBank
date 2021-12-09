@@ -103,9 +103,6 @@ const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 			</div>
 			<div className='expense-rows'>
 				<UserExpenseList
-					updateUserBalance={updateUserBalance}
-					username={username}
-					balance={balance}
 					expenses={transacList}
 					onEdit={handleEdit}
 					onDelete={handleDelete}

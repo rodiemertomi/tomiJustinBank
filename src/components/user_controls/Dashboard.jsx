@@ -106,12 +106,7 @@ const Dashboard = () => {
 				{/* BUTTON THAT SHOWS TRANSFER MONEY MODAL */}
 			</div>
 			<div>
-				<UserExpenseTracker
-					updateUserBalancePlus={updateUserBalancePlus}
-					updateUserBalance={updateUserBalance}
-					username={username}
-					balance={userObj.balance}
-				/>
+				<UserExpenseTracker username={username} balance={userObj.balance} />
 			</div>
 		</>
 	)
