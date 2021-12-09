@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
 import UserExpenseList from './UserExpenseList'
 
-const UserExpenseTracker = ({
-	username = '',
-	balance,
-	updateUserBalance,
-	updateUserBalancePlus,
-}) => {
+const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 	const [transaction, setTransaction] = useState('')
 	const [amount, setAmount] = useState('')
 	const [id, setId] = useState(Date.now())

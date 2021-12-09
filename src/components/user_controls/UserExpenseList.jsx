@@ -2,13 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { formatPrice } from '../helpers'
 
-const UserExpenseList = ({
-	updateUserBalance,
-	expenses = [],
-	onEdit,
-	onDelete,
-	username = '',
-}) => {
+const UserExpenseList = ({ expenses = [], onEdit, onDelete }) => {
 	const [expenseDetail, setExpenseDetail] = useState(expenses)
 
 	useEffect(() => {
