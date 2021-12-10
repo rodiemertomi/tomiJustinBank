@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react'
 import UserExpenseList from './UserExpenseList'
+import { formatPrice } from '../helpers'
 
 const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 	const [transaction, setTransaction] = useState('')
@@ -7,46 +9,64 @@ const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 	const [id, setId] = useState(Date.now())
 	const [status, setStatus] = useState('add')
 	const [transacList, setTransacList] = useState([])
+	const [expenses, setExpenses] = useState(0)
 
 	const handleAdd = () => {
 		if (transaction === '' || amount === 0 || amount === '') {
 			alert('Fields cannot be empty.')
 		} else {
-			if (status === 'add') {
-				const updatedList = [
-					...transacList,
-					{
-						id,
-						transaction,
-						amount,
-					},
-				]
-				setTransacList([...updatedList])
-				setId(Date.now())
-			} else if (status === 'edit') {
-				setId(Date.now())
-				const editTransaction = transacList.find(item => item.id === id)
-				setTransacList(
-					transacList.map(item => {
-						if (item.id === editTransaction.id) {
-							return {
-								id,
-								transaction,
-								amount,
+			if (!(amount < 0)) {
+				if (status === 'add' && !(amount < 0)) {
+					const updatedList = [
+						...transacList,
+						{
+							id,
+							transaction,
+							amount,
+						},
+					]
+					setTransacList([...updatedList])
+					setId(Date.now())
+				} else if (status === 'edit') {
+					setId(Date.now())
+					const editTransaction = transacList.find(item => item.id === id)
+					setTransacList(
+						transacList.map(item => {
+							if (item.id === editTransaction.id) {
+								return {
+									id,
+									transaction,
+									amount,
+								}
 							}
-						}
-						return item
-					})
-				)
+							return item
+						})
+					)
+				}
+			} else {
+				alert('Amount cannot be zero or less than zero.')
 			}
 		}
 
 		resetStates()
 	}
+
+	useEffect(() => {
+		addExpense(transacList.map(item => item.amount))
+	}, [transacList])
+
 	const resetStates = () => {
 		setTransaction('')
 		setAmount('')
 		setStatus('add')
+	}
+
+	const addExpense = price => {
+		let updatedExpense = 0
+		price.forEach(value => {
+			updatedExpense += value * 100
+		})
+		setExpenses(updatedExpense)
 	}
 
 	const handleEdit = val => {
@@ -58,6 +78,12 @@ const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 	}
 
 	const handleDelete = id => {
+		const deletedExpense = transacList.find(item => item.id === id)
+		console.log(deletedExpense)
+		let updatedExpense = expenses
+		updatedExpense -= deletedExpense.amount * 100
+		setExpenses(updatedExpense)
+
 		setTransacList(
 			transacList.filter(item => {
 				return item.id !== id
@@ -69,8 +95,12 @@ const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 
 	return (
 		<div>
-			<div className='header'>
-				<h1>Expenses</h1>
+			<div>
+				<h1>Balance: {formatPrice(balance)}</h1>
+				<br />
+				<h1>Expenses: {formatPrice(expenses)}</h1>
+				<br />
+				<h1>Total: {formatPrice(balance - expenses)}</h1>
 			</div>
 			<div className='add-expense-row'>
 				<label className='labels'>Transaction: </label>{' '}

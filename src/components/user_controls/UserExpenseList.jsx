@@ -24,7 +24,7 @@ const UserExpenseList = ({ expenses = [], onEdit, onDelete }) => {
 						}}
 						onClick={() => onEdit(item)}
 					>
-						{`${item.transaction} ${formatPrice(item.amount)}`}
+						{`${item.transaction} ${formatPrice(item.amount * 100)}`}
 					</div>
 					<button onClick={() => onDelete(item.id)}>Delete</button>
 				</li>
