@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import logo from '../img/logo.png'
+import '../css/forms.css'
 
 import TextField from '@mui/material/TextField'
 import { Button, Paper } from '@mui/material'
@@ -80,6 +81,7 @@ const Login = () => {
 							/>
 							<TextField
 								className='inputs'
+								type='password'
 								id='outlined-basic'
 								label='Enter Password'
 								variant='outlined'
