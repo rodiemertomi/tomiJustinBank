@@ -4,7 +4,8 @@ import { formatPrice } from '../helpers'
 const UserDeposit = ({ userobj }) => {
 	const [amount, setAmount] = useState(0)
 
-	const handleDeposit = () => {
+	const handleDeposit = event => {
+		event.preventDefault()
 		if (amount !== 0 && amount !== null) {
 			amount < 0
 				? alert('Amount can not be negative.')

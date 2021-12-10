@@ -4,7 +4,8 @@ import { formatPrice } from '../helpers'
 const UserWithdraw = ({ userobj = {} }) => {
 	const [amount, setAmount] = useState(null)
 
-	const handleWithdraw = () => {
+	const handleWithdraw = event => {
+		event.preventDefault()
 		if (userobj.username !== '' && amount !== null) {
 			if (checkUser(userobj.username)) {
 				if (checkBalance(userobj.balance)) {
