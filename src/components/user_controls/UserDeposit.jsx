@@ -6,7 +6,7 @@ const UserDeposit = ({ username='' }) => {
     const handleDeposit = () => {
         const userObj = JSON.parse(localStorage.getItem(`${username}`))
         userObj.balance += amount
-        localStorage.setItem(`${username}`, JSON.stringify(`${userObj}`))
+        localStorage.setItem(`${username}`, JSON.stringify(userObj))
     }
 
     return (

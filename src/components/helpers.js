@@ -1,5 +1,5 @@
 export function formatPrice(cents){
-    return (cents / 100).toLocaleString("ph-PHP", {
+    return (cents / 100).toLocaleString("en-PH", {
         style: "currency",
         currency: "Php"
     })

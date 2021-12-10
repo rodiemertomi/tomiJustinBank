@@ -1,0 +1,8 @@
+body {
+ font-family: norwester, Roboto, "Helvetica Neue", 'Poppins', sans-serif;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ background-color: #0058AE;
+}

@@ -1,6 +1,9 @@
+
+
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import logo from '../img/logo.png'
+import '../css/forms.css'
 
 import TextField from '@mui/material/TextField'
 import { Button, Paper } from '@mui/material'
@@ -10,20 +13,22 @@ import Box from '@mui/material/Box';
 
 
 
-const Login = () => {
-    
+
+const Login = () => { 
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        userName === 'admin' ? navigate(`/admin`) : checkUser(userName)
+        userName === 'admin' && password === 'admin' ? navigate(`/admin`) : checkUser(userName)
     }
 
     const handleSignUp = () => {
-        navigate(`/signup`)
+      navigate(`/signup`)
     }
+
+    
 
     const checkUser = (name) => {
         const user = JSON.parse(localStorage.getItem(`${name}`))
@@ -33,11 +38,10 @@ const Login = () => {
         } else {
             alert(`Wrong username or password`)
         }
-    }
+    }  
 
     return (
-        <React.Fragment style={{borderRadius: 100, }} elevation={100}>
-        <Paper elevation={100}>
+        <div style={{backgroundColor: "#282c34", paddingTop: 1, paddingBottom: 1}}>
         <Container component="main" maxWidth="xs" style={{backgroundColor: "#282c34"}}>
             <Paper elevation={52}>
             <Box
@@ -46,12 +50,12 @@ const Login = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                borderRadius: 20,
+                borderRadius: '100%',
                 margin: 18,
             }}
             >
             <form className="login-form">
-                <img src={logo} style={{width: 330, marginBottom: -5}} alt="logo" />
+                <img src={logo} style={{width: 330, marginTop: 20, marginBottom: -5}} alt="logo" />
 
                 <Typography variant="h3" style={{fontFamily: "norwester"}} >
                 LOGIN
@@ -69,6 +73,7 @@ const Login = () => {
                 />
                 <TextField
                   className="inputs"
+                  type="password"
                   id="outlined-basic" 
                   label="Enter Password" 
                   variant="outlined"
@@ -88,7 +93,9 @@ const Login = () => {
                 Sign In
                 </Button>
                 
-                <Typography variant="h5" color="initial" style={{fontFamily: "norwester"}}>or</Typography>
+                <Typography variant="h5" color="initial" style={{fontFamily: "norwester"}}>
+                Don't Have an Account?
+                </Typography>
                 <Button
                 type="submit"
                 fullWidth
@@ -102,12 +109,9 @@ const Login = () => {
           </Box>
          </Paper>
         </Container>
-        </Paper>
-</React.Fragment>
+     </div>
     )   
 }
 
 export default Login
-
-
 
