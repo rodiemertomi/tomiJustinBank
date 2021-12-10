@@ -33,7 +33,7 @@ const Signup = () => {
 				firstname: firstName,
 				lastname: lastName,
 				fullname: `${firstName} ${lastName}`,
-				expense: [{}],
+				expense: [],
 			}
 			if (localStorage.getItem(`${userName}`) !== null) {
 				alert(`${userName} already exists`)

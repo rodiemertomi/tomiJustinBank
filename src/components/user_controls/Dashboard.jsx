@@ -193,7 +193,6 @@ const Dashboard = () => {
 					setShowTransfer(false)
 				}}
 				show={showTransfer}
-				user={username}
 			>
 				<UserTransfer username={username} userobj={userObj} />
 			</Modal>

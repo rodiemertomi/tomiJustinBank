@@ -4,11 +4,13 @@ import UserExpenseList from './UserExpenseList'
 import { formatPrice } from '../helpers'
 
 const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
+	const userObj = JSON.parse(localStorage.getItem(`${username}`))
+	const userExpenses = userObj.expense
 	const [transaction, setTransaction] = useState('')
 	const [amount, setAmount] = useState('')
 	const [id, setId] = useState(Date.now())
 	const [status, setStatus] = useState('add')
-	const [transacList, setTransacList] = useState([])
+	const [transacList, setTransacList] = useState(userExpenses)
 	const [expenses, setExpenses] = useState(0)
 
 	const handleAdd = () => {
@@ -51,9 +53,14 @@ const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 		resetStates()
 	}
 
-	useEffect(() => {
-		addExpense(transacList.map(item => item.amount))
-	}, [transacList])
+	const saveExpenses = () => {
+		userObj.expense = []
+		transacList.forEach(item => {
+			userObj.expense.push(item)
+		})
+
+		localStorage.setItem(`${username}`, JSON.stringify(userObj))
+	}
 
 	const resetStates = () => {
 		setTransaction('')
@@ -93,6 +100,9 @@ const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 		resetStates()
 	}
 
+	useEffect(() => {
+		addExpense(transacList.map(item => item.amount))
+	}, [transacList])
 	return (
 		<div>
 			<div>
@@ -127,9 +137,11 @@ const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 					className={status === 'add' ? 'add-button' : 'edit-button'}
 					onClick={handleAdd}
 				>
-					Save Expense
+					Add Expense
 				</button>
-				<button className='buttons'>Clear Expenses</button>
+				<button className='buttons' onClick={saveExpenses}>
+					Save Expenses
+				</button>
 			</div>
 			<div className='expense-rows'>
 				<UserExpenseList
