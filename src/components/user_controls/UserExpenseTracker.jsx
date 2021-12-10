@@ -100,7 +100,7 @@ const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 				<br />
 				<h1>Expenses: {formatPrice(expenses)}</h1>
 				<br />
-				<h1>Total: {formatPrice(balance - expenses)}</h1>
+				<h1>Total Balance: {formatPrice(balance - expenses)}</h1>
 			</div>
 			<div className='add-expense-row'>
 				<label className='labels'>Transaction: </label>{' '}

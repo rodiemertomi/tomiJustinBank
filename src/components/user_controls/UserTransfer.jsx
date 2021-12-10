@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { formatPrice } from '../helpers'
 
-const UserTransfer = ({ userobj1 = {} }) => {
+const UserTransfer = ({ userobj = {} }) => {
 	const [user2, setUser2] = useState('')
 	const [amount, setAmount] = useState(0)
 
@@ -11,18 +11,18 @@ const UserTransfer = ({ userobj1 = {} }) => {
 		if (user2 !== null && amount !== 0 && amount !== null) {
 			const userobj2 = JSON.parse(localStorage.getItem(`${user2}`))
 			if (userobj2 !== null) {
-				if (checkBalance(userobj1.balance)) {
-					userobj1.balance = userobj1.balance - parseInt(amount * 100)
-					localStorage.setItem(`${userobj1.username}`, JSON.stringify(userobj1))
+				if (checkBalance(userobj.balance)) {
+					userobj.balance = userobj.balance - parseInt(amount * 100)
+					localStorage.setItem(`${userobj.username}`, JSON.stringify(userobj))
 					userobj2.balance = userobj2.balance + parseInt(amount * 100)
 					localStorage.setItem(`${user2}`, JSON.stringify(userobj2))
 					alert(
-						`${userobj1.username} deposited ${formatPrice(amount * 100)} to ${
+						`${userobj.username} deposited ${formatPrice(amount * 100)} to ${
 							userobj2.username
 						}`
 					)
 				} else {
-					alert(`${userobj1.username} has insufficient funds`)
+					alert(`${userobj.username} has insufficient funds`)
 				}
 			} else {
 				alert(`${userobj2.username} does not exist.`)
@@ -43,7 +43,7 @@ const UserTransfer = ({ userobj1 = {} }) => {
 	return (
 		<div>
 			<form className='transfer-form'>
-				<h1>Transfer from: {`${userobj1.username}`}</h1>
+				<h1>Transfer from: {`${userobj.username}`}</h1>
 				<label className='labels'>Transfer to:</label>
 				<input
 					type='text'

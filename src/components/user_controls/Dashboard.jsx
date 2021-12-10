@@ -4,7 +4,8 @@ import UserDeposit from './UserDeposit'
 import UserWithdraw from './UserWithdraw'
 import Modal from '../../modal/Modal'
 import CreditCard from '../user_controls/CreditCard'
-
+import UserExpenseTracker from './UserExpenseTracker'
+import UserTransfer from './UserTransfer'
 import logo from '../../img/logo.png'
 import deposit from '../../img/deposit.png'
 import withdraw from '../../img/withdrawal.png'
@@ -161,6 +162,9 @@ const Dashboard = () => {
 						</Paper>
 					</div>
 				</div>
+				<div>
+					<UserExpenseTracker username={username} balance={userObj.balance} />
+				</div>
 			</div>
 
 			<Modal
@@ -170,7 +174,7 @@ const Dashboard = () => {
 				show={showDeposit}
 				user={username}
 			>
-				<UserDeposit username={username} />
+				<UserDeposit username={username} userobj={userObj} />
 			</Modal>
 			{/* BUTTON THAT SHOWS DEPOSIT MONEY MODAL */}
 
@@ -180,7 +184,7 @@ const Dashboard = () => {
 				}}
 				show={showWithdraw}
 			>
-				<UserWithdraw username={username} />
+				<UserWithdraw username={username} userobj={userObj} />
 			</Modal>
 
 			<Modal
@@ -191,7 +195,7 @@ const Dashboard = () => {
 				show={showTransfer}
 				user={username}
 			>
-				<p>This is a modal body</p>
+				<UserTransfer username={username} userobj={userObj} />
 			</Modal>
 			{/* BUTTON THAT SHOWS TRANSFER MONEY MODAL */}
 			{/* { username }'s Dashboard
