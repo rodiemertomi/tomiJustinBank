@@ -10,60 +10,26 @@
 }
 
 body {
-<<<<<<< HEAD
 	font-family: norwester, Roboto, 'Helvetica Neue', 'Poppins', sans-serif;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: #448aff;
-	overflow: hidden;
-}
-
-/* input[type=text], input[type=password],
-input[type=number] {
-    font-size: 20px;
-    padding: 12px 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-} */
-
-.links {
-	text-decoration: none;
-	color: black;
-=======
-    font-family: norwester, Roboto, "Helvetica Neue",'Poppins', sans-serif;
-    /* display: flex;
+	/* display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; */
-    background-color: #2196F3;
-    ;
->>>>>>> origin/design
+	background-color: #2196f3;
 }
 
 th {
 	color: white;
 }
 
-<<<<<<< HEAD
-th,
-td {
-	width: 100%;
-	text-align: center;
-	padding: 10px 100px;
-	border-bottom: 2px solid black;
-=======
-.links{
-    text-decoration: none;
-    color: black;
+.links {
+	text-decoration: none;
+	color: black;
 }
 .buttons {
-    background-color: black;
-    color: white;
-    outline: none;
->>>>>>> origin/design
+	background-color: black;
+	color: white;
+	outline: none;
 }
 
 .expense-rows {
