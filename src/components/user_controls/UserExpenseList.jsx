@@ -14,14 +14,8 @@ const UserExpenseList = ({ expenses = [], onEdit, onDelete }) => {
 			{expenseDetail.map(item => (
 				<li
 					key={item.id}
-					style={{ display: 'flex', justifyContent: 'space-between', gap: 10 }}
 				>
 					<div
-						style={{
-							display: 'flex',
-							justifyContent: 'space-between',
-							gap: 10,
-						}}
 						onClick={() => onEdit(item)}
 					>
 						{`${item.transaction} ${formatPrice(item.amount * 100)}`}

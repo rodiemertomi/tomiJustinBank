@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import UserExpenseList from './UserExpenseList'
 import { formatPrice } from '../helpers'
+import '../../css/userexptracker.css'
 
 const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 	const userObj = JSON.parse(localStorage.getItem(`${username}`))
@@ -104,14 +105,26 @@ const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 		addExpense(transacList.map(item => item.amount))
 	}, [transacList])
 	return (
-		<div>
-			<div>
+		<>
+		<div class="flex-container">
+   <div class="flex-items">
 				<h1>Balance: {formatPrice(balance)}</h1>
-				<br />
+			</div>
+   <div class="flex-items">
 				<h1>Expenses: {formatPrice(expenses)}</h1>
-				<br />
+			</div>
+   <div class="flex-items">
 				<h1>Total Balance: {formatPrice(balance - expenses)}</h1>
 			</div>
+</div>
+		<div>
+			
+
+
+
+
+
+
 			<div className='add-expense-row'>
 				<label className='labels'>Transaction: </label>{' '}
 				<input
@@ -151,6 +164,7 @@ const UserExpenseTracker = ({ username = '', balance, updateUserBalance }) => {
 				/>
 			</div>
 		</div>
+		</>
 	)
 }
 

@@ -166,9 +166,9 @@ const Dashboard = () => {
 					</div>
           		</div>
 				</Container>
-				<div>
+	
 					<UserExpenseTracker username={username} balance={userObj.balance} />
-				</div>
+		
 
 
 			<Modal
