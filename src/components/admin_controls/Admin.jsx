@@ -56,12 +56,11 @@ const Admin = () => {
 
    <Container style={{marginLeft: -220}}>
 			<div className='main-container'>
-				<div>
+				<div className="creditcard-content">
 					<CreditCard />
 				</div>
 
-				<div className='button-container'> 
-					<div>
+					<div className='item'>
 						<Paper
 							elevation={24}
 							style={{ borderRadius: 25, backgroundColor: 'inherit' }}
@@ -96,7 +95,7 @@ const Admin = () => {
 							</Box>
 						</Paper>
 					</div>
-					<div >
+					<div className="item">
 						<Paper
 							elevation={24}
 							style={{ borderRadius: 25, backgroundColor: 'inherit' }}
@@ -131,7 +130,7 @@ const Admin = () => {
 							</Box>
 						</Paper>
 					</div>
-					<div className='transfer-btn'>
+					<div className='item'>
 						<Paper
 							elevation={24}
 							style={{ borderRadius: 25, backgroundColor: 'inherit' }}
@@ -164,15 +163,14 @@ const Admin = () => {
 						</Paper>
 					</div>
 
-    </div>
 			
 
 				
 				</div>
 				</Container>
 				</div>
-    <Container style={{marginTop: 0, }}>
-				<div className="userbtn-container">
+    <Container style={{marginTop: 75}}>
+				<div className="userbtn-container" >
 	   <div>
 						<Paper
 							elevation={24}
