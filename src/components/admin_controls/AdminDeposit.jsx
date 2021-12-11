@@ -40,6 +40,8 @@ const AdminDeposit = () => {
 		setUsers(updatedUsers)
 	}, [])
 
+	useEffect(() => {}, [])
+
 	const getUserKeys = updatedUsers => {
 		for (let i = 0; i < localStorage.length; ++i) {
 			updatedUsers.push(localStorage.key(i))
@@ -56,8 +58,11 @@ const AdminDeposit = () => {
 						setUserName1(e.target.value)
 					}}
 				>
+					<option value='' selected hidden disabled>
+						------
+					</option>
 					{users.map(item => (
-						<option key={Date.now} value={`${item}`}>
+						<option key={Date.now} value={item}>
 							{`${item}`}
 						</option>
 					))}
