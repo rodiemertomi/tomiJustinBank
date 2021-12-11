@@ -11,14 +11,18 @@ const AdminTransfer = () => {
 
 		if (user1 !== null) {
 			if (user2 !== null) {
-				if (checkBalance(user1)) {
-					user1.balance = user1.balance - parseInt(amount)
-					localStorage.setItem(`${userName1}`, JSON.stringify(user1))
-					user2.balance = user2.balance + parseInt(amount)
-					localStorage.setItem(`${userName2}`, JSON.stringify(user2))
-					alert(`${userName1} deposited ${amount} to ${userName2}`)
+				if (user1 === user2) {
+					if (checkBalance(user1)) {
+						user1.balance = user1.balance - parseInt(amount)
+						localStorage.setItem(`${userName1}`, JSON.stringify(user1))
+						user2.balance = user2.balance + parseInt(amount)
+						localStorage.setItem(`${userName2}`, JSON.stringify(user2))
+						alert(`${userName1} deposited ${amount} to ${userName2}`)
+					} else {
+						alert(`${userName1} has insufficient funds`)
+					}
 				} else {
-					alert(`${userName1} has insufficient funds`)
+					alert(`Cannot transfer to same account.`)
 				}
 			} else {
 				alert(`${userName2} does not exist.`)
