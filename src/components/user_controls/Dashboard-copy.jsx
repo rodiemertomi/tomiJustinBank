@@ -10,13 +10,12 @@ import logo from '../../img/logo.png'
 import deposit from '../../img/deposit.png'
 import withdraw from '../../img/withdrawal.png'
 import transfer from '../../img/money-transfer.png'
-import '../../css/dashboard.css'
+import '../../css/dashboard-copy.css'
 import { Paper } from '@mui/material'
 import LogoutIcon from '@mui/icons-material/Logout'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
 
 const Dashboard = () => {
 	const navigate = useNavigate()
@@ -33,7 +32,7 @@ const Dashboard = () => {
 				style={{
 					width: 330,
 					marginTop: 20,
-					marginLeft: -220,
+					marginLeft: 25,
 					marginBottom: 45,
 					display: 'inline',
 				}}
@@ -50,13 +49,12 @@ const Dashboard = () => {
 				<LogoutIcon fontSize='inherit' />
 			</IconButton>
 
-            <Container style={{marginLeft: -220}}>
 			<div className='main-container'>
 				<div>
 					<CreditCard username={username} userbalance={userObj.balance} />
 				</div>
 
-				{/* <div className='button-container'> */}
+				<div className='button-container'>
 					<div>
 						<Paper
 							elevation={24}
@@ -94,7 +92,7 @@ const Dashboard = () => {
 							</Box>
 						</Paper>
 					</div>
-					<div >
+					<div>
 						<Paper
 							elevation={24}
 							style={{ borderRadius: 25, backgroundColor: 'inherit' }}
@@ -131,7 +129,7 @@ const Dashboard = () => {
 							</Box>
 						</Paper>
 					</div>
-					<div>
+					<div className='transfer-btn'>
 						<Paper
 							elevation={24}
 							style={{ borderRadius: 25, backgroundColor: 'inherit' }}
@@ -141,8 +139,7 @@ const Dashboard = () => {
 								<img
 									src={transfer}
 									alt='transfer'
-									style={{ width: 120, display: 'block', margin: '0 auto',marginLeft: 50,
-								    marginRight: 50, }}
+									style={{ width: 120, display: 'block', margin: '0 auto' }}
 								/>
 								<Button
 									fullWidth
@@ -156,7 +153,7 @@ const Dashboard = () => {
 										borderRadius: 25,
 										fontFamily: 'Norwester',
 										fontSize: 20,
-										color: '#E1C20E'
+										color: '#E1C20E',
 									}}
 								>
 									Transfer Money
@@ -164,12 +161,11 @@ const Dashboard = () => {
 							</Box>
 						</Paper>
 					</div>
-          		</div>
-				</Container>
+				</div>
 				<div>
 					<UserExpenseTracker username={username} balance={userObj.balance} />
 				</div>
-
+			</div>
 
 			<Modal
 				onClose={() => {
@@ -182,6 +178,37 @@ const Dashboard = () => {
 			</Modal>
 			{/* BUTTON THAT SHOWS DEPOSIT MONEY MODAL */}
 
+			<Modal
+				onClose={() => {
+					setShowWithdraw(false)
+				}}
+				show={showWithdraw}
+			>
+				<UserWithdraw username={username} userobj={userObj} />
+			</Modal>
+
+			<Modal
+				title='Transfer Money To'
+				onClose={() => {
+					setShowTransfer(false)
+				}}
+				show={showTransfer}
+				user={username}
+			>
+				<UserTransfer username={username} userobj={userObj} />
+			</Modal>
+			{/* BUTTON THAT SHOWS TRANSFER MONEY MODAL */}
+			{/* { username }'s Dashboard
+            <br />
+            <br />
+            {formatPrice(user.balance)}
+            <br />
+            <br />
+            Account number
+            <br />
+            <br />
+            {user.accountnumber}
+            */}
 		</React.Fragment>
 	)
 }

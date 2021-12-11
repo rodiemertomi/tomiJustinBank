@@ -3,7 +3,7 @@ import '../../css/creditcard.css'
 import {formatPrice} from '../helpers'
 
 
-const CreditCard = ({username='John Doe', userbalance}) => {
+const CreditCard = ({username='Admin', userbalance = 99999999999}) => {
  return (
   <React.Fragment>
   
